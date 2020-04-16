@@ -2,6 +2,7 @@ import React from 'react';
 
 class Counter extends React.Component{
 
+    /*
     state = {
         value: this.props.counter.value
     };
@@ -9,8 +10,9 @@ class Counter extends React.Component{
     eventHandleIncrement = () => {
         //para atualizar o component e ele renderizar, atualizamos o estado
         //faz o virtual DOM ficar igual o real DOM
-        this.setState( { value: this.state.value + 1 } )
+        //this.setState( { value: this.state.value + 1 } )
     }
+ */
 
     // dentro desse render a linguagem é o jsx, fora é javascript
     // { this.props.children } pega oq esta dentro de <Counter></Counter>
@@ -21,7 +23,7 @@ class Counter extends React.Component{
 
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
 
-                <button onClick={ () => this.eventHandleIncrement() }
+                <button onClick={ () => this.props.onIncrement(this.props.counter) }
                     className="btn btn-secondary btn-sm">Increment
                 </button>
 
@@ -35,12 +37,12 @@ class Counter extends React.Component{
 
     getBadgeClasses(){
         let classes = "badge m-2 badge-"
-        classes += ( this.state.value === 0 ) ? "warning" : "primary";
+        classes += ( this.props.counter.value === 0 ) ? "warning" : "primary";
         return classes;
     }
 
     formatCount(){
-        const { value } = this.state;
+        const value = this.props.counter.value;
         return value === 0 ? 'Zero' : value;
     }
 }
