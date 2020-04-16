@@ -4,11 +4,7 @@ import Counters from './Components/counters';
 
 class App extends React.Component{
 
-    /**
-    *
-    *       funçoes do lifecycle do react
-    *
-    */
+    /**funçoes do lifecycle do react*/
     constructor(props) {
         super(props);
         //this.state = props.state;
