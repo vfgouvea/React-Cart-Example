@@ -4,6 +4,22 @@ import Counters from './Components/counters';
 
 class App extends React.Component{
 
+    /**
+    *
+    *       funçoes do lifecycle do react
+    *
+    */
+    constructor(props) {
+        super(props);
+        //this.state = props.state;
+        console.log("App - Constructor");
+    }
+
+    componentDidMount() {
+        //this.setState({ datas });
+        console.log("App - Mounted");
+    }
+
     state = {
         counters: [
            { id: 1 , value:0 },
@@ -39,6 +55,7 @@ class App extends React.Component{
 
 
     render() {
+        console.log("App - Rendered");
         return (
             <React.Fragment>
                 <NavBar totalCounters={this.state.counters.filter(c=>c.value>0).length} />
@@ -52,7 +69,10 @@ class App extends React.Component{
                 </main>
             </React.Fragment>
         )
+
     }
+
+
 
 }
 

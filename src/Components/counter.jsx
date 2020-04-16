@@ -2,18 +2,35 @@ import React from 'react';
 
 class Counter extends React.Component{
 
+    /* funcçoes do lifecycle REact */
+    componentDidUpdate(prevProps,prevState){
+        console.log("Counter - Updated");
+        console.log("prevProps",prevProps);
+        console.log("prevState",prevState);
+        if( prevProps.counter.value !== this.props.counter.value){
+            //chamada ajax
+        }
+    }
+
+    componentWillUnmount() {
+        //antes de deletar passa aqui
+        console.log("Counter - Unmount");
+    }
+
     render() {
+        const { onDelete,onIncrement } = this.props;
+        console.log("Counter - Rendered");
         return (
             <div>
                 { this.props.children }
 
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
 
-                <button onClick={ () => this.props.onIncrement(this.props.counter) }
+                <button onClick={ () => onIncrement(this.props.counter) }
                     className="btn btn-secondary btn-sm">Increment
                 </button>
 
-                <button onClick={ () => this.props.onDelete(this.props.counter.id) }
+                <button onClick={ () => onDelete(this.props.counter.id) }
                     className="btn btn-danger btn-sm m-2">Delete
                 </button>
 
